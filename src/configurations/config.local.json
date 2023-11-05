@@ -1,0 +1,32 @@
+{
+    "configurations": {
+        "postgresConfig": {
+            "client": "pg",
+            "connection": "postgres://postgres:secret@localhost/chaitanya_db",
+            "pool": {
+                "min": 2,
+                "max": 10
+            }
+        },
+        "mongoConfig": {},
+        "sqlConfig": {},
+        "serverConfig": {
+            "port": 25200,
+            "routePrefix": "/api"
+        },
+        "externalUrls": {},
+        "myHost": "localhost",
+        "awsS3": {
+            "accessKeyId": "",
+            "secretAccessKey": "",
+            "region": "ap-south-1",
+            "bucketName": "",
+            "bucketBaseUrl": ""
+        },
+        "mailConfig": {},
+        
+        "fcmConfiguration": {
+            "iOS-jqpSecretKey": "AAAAhaz0o2k:APA91bF-nTfiQhQ71KbxhnHVGbx1to9whzlfcnm80DKjSVZyX8l5NNnDb2Io158gUpBQSn_wP4anOjPPS0paBvCT8tiYR9D8PnCxWO1GNj7sE50F3TZRglkHe6jXdCHKRDWDEjkw8HFG"
+        }
+    }
+}
