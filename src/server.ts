@@ -32,16 +32,17 @@ export async function init(
         const port = serverConfig.port;
 
         const server = new Hapi.Server({
-            host: myHost,
+            host: 'localhost',
             port: port,
             router: {
                 stripTrailingSlash: true,
             },
             routes: {
-                cors: {
-                    origin: ['*'],
-                    credentials: true
-                }
+                // cors: {
+                //     origin: ['*'],
+                //     credentials: true
+                // }
+                "cors": true
             },
             state: {
                 strictHeader: false
@@ -94,16 +95,16 @@ export async function init(
         };
 
 
-        // await server.register(require('hapi-auth-jwt2'));
+        await server.register(require('hapi-auth-jwt2'));
 
-        // server.auth.strategy('jwt', 'jwt',
-        //     {
-        //         key: globalVariables.jwtSecretKey,          // Never Share your secret key
-        //         validate: validate,            // validate function defined above
-        //         verifyOptions: { algorithms: ['HS256'] }, // pick a strong algorithm
-        //     });
+        server.auth.strategy('jwt', 'jwt',
+            {
+                key: globalVariables.jwtSecretKey,          // Never Share your secret key
+                validate: validate,            // validate function defined above
+                verifyOptions: { algorithms: ['HS256'] }, // pick a strong algorithm
+            });
 
-        // server.auth.default('jwt');
+        server.auth.default('jwt');
 
         TestRoutes(server);
         UsersRoutes(server);
