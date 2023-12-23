@@ -6,15 +6,16 @@ import { StatusCodes } from '../classes/StatusCodes';
 export default class TestController {
 
     constructor(server: Hapi.Server) {
+        console.log("hapi::: server test",+server)
     }
 
     public async handleTestGetMethod(request: Hapi.Request, h: Hapi.ResponseToolkit) {
-
+        console.log("handleTestGetMethod")
         let response: Response;
 
         try {
 
-            response = new Response(true, StatusCodes.OK, "", {});
+            response = new Response(true, StatusCodes.OK, "working", {});
         } catch (err) {
 
             response = new Response(false, StatusCodes.INTERNAL_SERVER_ERROR, "", {});

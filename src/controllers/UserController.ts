@@ -28,7 +28,8 @@ export default class UserController {
 
 
     constructor(server: Hapi.Server) {
-
+        console.log("server ::: called 111 ")
+        console.log("post gress ::: called 1111",+this.globalVariables)
         this.globalVariables = server['app']['globalVariables'];
         this.usersServiceImpl = new CommonCrudServiceImpl(this.globalVariables.postgres, 't_users');
         this.tPaymentLogsServiceImpl = new CommonCrudServiceImpl(this.globalVariables.postgres, 't_payment_logs');
@@ -276,7 +277,7 @@ export default class UserController {
         try {
 
             let condition = {};
-            
+            console.log("equest.payload['mobile']:::::",+request.payload['mobile'])
             if (request.payload['mobile']) {
                 condition = {
                     'mobile': request.payload['mobile']

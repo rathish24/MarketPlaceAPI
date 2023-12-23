@@ -22,7 +22,7 @@ export default function (server: Hapi.Server) {
                 // params: {},
                 // payload: {},
                 failAction: async (request, h, err) => {
-
+                    console.log("test::: ")
                     if (err) {
 
                         let response = new Response(false, StatusCodes.NOT_ACCEPTABLE, err.message, {});

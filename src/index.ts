@@ -22,7 +22,7 @@ let confgis = Configs.getConfigurations();
 const start = async ({ config, globalVariables, myHost }) => {
     try {
      //   console.log("config:::::",config);
-     //   console.log("globalVariables:::::",globalVariables);
+     //   console.log("globalVariables:::::",globalVariables.postgres);
      //   console.log("myHost:::::",myHost);
         const server = await Server.init(config, globalVariables, myHost);
         await server.start(function (err) { console.log("srver erri"+err);
@@ -56,16 +56,16 @@ async function validateConnection() {
   }
 
 let globalVariables: AppGlobalVariableInterface = {};
-console.log("Configs postgress", confgis.postgresConfig);
+//console.log("Configs postgress", confgis.postgresConfig);
 globalVariables.postgres = knex(confgis.postgresConfig);
 globalVariables.externalUrls = confgis.externalUrls;
 globalVariables.awsS3 = confgis.awsS3;
 globalVariables.jwtSecretKey = "HereIsMySecretKey"
 globalVariables.fcmSecretKeys = confgis.fcmConfiguration;
 //console.log("globalVariables.postgres", globalVariables.postgres);
-console.log("Configs", confgis);
-console.log("FCM:", globalVariables.fcmSecretKeys);
-console.log("jwtSecretKey:", globalVariables.jwtSecretKey);
+// console.log("Configs", confgis);
+// console.log("FCM:", globalVariables.fcmSecretKeys);
+// console.log("jwtSecretKey:", globalVariables.jwtSecretKey);
 
 start({
     config: confgis.serverConfig,

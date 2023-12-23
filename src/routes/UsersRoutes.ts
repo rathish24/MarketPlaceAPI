@@ -11,11 +11,13 @@ export default function (server: Hapi.Server) {
     const controller = new UserController(server);
     let isAuthRequired = false;
     server.bind(controller);
-
+    var path = '/' + version + "/users/login"
+    console.log("user routes called----------",path)
     server.route([
         {
             method: 'POST',
             path: '/' + version + "/users/login",
+            
             options: {
                 handler: controller.handleLogin,
                 description: 'User Login',
@@ -25,7 +27,8 @@ export default function (server: Hapi.Server) {
                 validate: {
                     payload: loginModel,
                     failAction: async (request, h, err) => {
-
+                        console.log("err log:::",+err)
+                        console.log("h log:::",+h)
                         if (err) {
                             let response = new Response(false, StatusCodes.NOT_ACCEPTABLE, err.message, {});
                             return h.response(response).code(response.getStatusCode()).takeover();
